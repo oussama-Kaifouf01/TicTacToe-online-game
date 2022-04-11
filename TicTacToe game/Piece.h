@@ -6,15 +6,22 @@ class Piece
 {
 public:
 	Piece();
+	//Returns the piece's shape (in order to draw it in the window)
 	sf::RectangleShape GetPiece();
+	//changes the position of the piece
 	void SetPiecePosition();
+	//switch the texture of the position beetwen, normal and winning piece
 	void SwitchPieceTexture();
 
 protected:
 private:
+	//the type of the piece (X or O)
 	char Type;
+	//the shape of the piece
 	sf::RectangleShape PieceShape;
+	//the texture of the normal piece (while playing piece)
 	sf::Texture PieceTexture;
+	//the texture of the winning piece (after winning piece)
 	sf::Texture WinPieceTexture;
 
 

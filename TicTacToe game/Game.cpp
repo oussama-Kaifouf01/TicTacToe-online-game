@@ -23,6 +23,11 @@ void Game::StartGame(void)
 }
 
 
+void Game::_setIndex(bool isOpPiece, sf::Vector2i mousePosition)
+{
+	// TODO : implement
+}
+
 bool Game::CheckWin(void)
 {
    // TODO : implement
@@ -37,7 +42,7 @@ void Game::DrawPieces(void)
 
 
 
-void Game::NewGame(void)
+void Game::_NewGame(void)
 {
    // TODO : implement
 }

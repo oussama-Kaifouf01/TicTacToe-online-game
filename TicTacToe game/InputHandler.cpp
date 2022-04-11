@@ -19,19 +19,19 @@ InputHandler::~InputHandler()
 }
 
  
-void InputHandler::Setfocus(void)
+void InputHandler::SetFocus(void)
 {
    // TODO : implement
 }
 
  
-bool InputHandler::Getfocus(void)
+bool InputHandler::GetFocus(void)
 {
    // TODO : implement
 }
  
 
-bool InputHandler::IsMousepressed(void)
+bool InputHandler::IsMousePressed(void)
 {
    // TODO : implement
 }
