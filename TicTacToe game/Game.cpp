@@ -23,7 +23,7 @@ void Game::StartGame(void)
 }
 
 
-void Game::_setIndex(bool isOpPiece, sf::Vector2i mousePosition)
+void Game::_setIndex(sf::Vector2i mousePosition)
 {
 	// TODO : implement
 }

@@ -23,7 +23,7 @@ protected:
 private:
 	//method that find out in what square the player has clicked, then put the player's piece (x or o) 
 	//the GridRef in the right index
-	void _setIndex(bool isOpPiece, sf::Vector2i mousePosition = sf::Vector2i(0, 0));
+	void _setIndex(sf::Vector2i mousePosition = sf::Vector2i(0, 0));
 	//method that checks if a player has won after each move
 	bool CheckWin();
 	//method that draws the pieces in the grid
