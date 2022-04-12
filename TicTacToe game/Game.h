@@ -38,7 +38,7 @@ private:
 	//Where the winner gonna be stocked (used to keep the grid getting inputs as long as there is no winner)
 	char Winner;
 	//Counts how many positions are left empty (used to tell if the game finished with no winner (DRAW))
-	int EmptyPosition;
+	int EmptyPositions;
 	//Data Structure to stock where X and O pieces are placed, Initially the array contains only 'E' which 
 	//'E' stands for Empty position
 	//'x'/'o' stands for normal 'X'/'O' Piece
