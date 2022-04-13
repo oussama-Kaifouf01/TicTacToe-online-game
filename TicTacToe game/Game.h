@@ -20,16 +20,26 @@ protected:
 	//Window where the game will be displayed, protected so it can be accessed from the inputHandler
 	sf::RenderWindow Window;
 
+
 private:
 	//method that find out in what square the player has clicked, then put the player's piece (x or o) 
 	//the GridRef in the right index
 	void _setIndex(sf::Vector2i mousePosition = sf::Vector2i(0, 0));
 	//method that checks if a player has won after each move
-	bool CheckWin();
+	bool _CheckWin();
 	//method that draws the pieces in the grid
-	void DrawPieces();
+	void _DrawPieces();
 	//method to start a new game
 	void _NewGame();
+
+	/********************* Vritual methods *********************/
+	//because the inputHandler function must be called inside the game loop we need to overload these functions
+
+	virtual sf::Vector2i GetClickedPosition() = 0;
+	virtual bool IsMousePressed() = 0;
+	virtual void SetFocus(bool focus) = 0;
+	virtual bool GetFocus() = 0;
+
 	
 	//id of the game, will be used in online mode
 	int Id;
@@ -51,6 +61,8 @@ private:
 	Piece X;
 	//O Piece
 	Piece O;
+
+	//
 
 
 };

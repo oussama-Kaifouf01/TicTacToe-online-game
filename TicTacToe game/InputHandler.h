@@ -7,14 +7,14 @@ class InputHandler : public Game
 public:
 	InputHandler();
 	~InputHandler();
-	//returns the the current position of the mouse in window coordinates.
-	sf::Vector2i GetClickedPosition();
-	//Enable Focus to the window
-	void SetFocus();
-	//check if window in focus or not
-	bool GetFocus();
 	//check if the mouse is pressed
 	bool IsMousePressed();
+	//returns the the current position of the mouse in window coordinates.
+	sf::Vector2i GetClickedPosition();
+	//check if window in focus or not
+	bool GetFocus();
+	//Enable Focus to the window
+	void SetFocus(bool focus);
 
 protected:
 private:

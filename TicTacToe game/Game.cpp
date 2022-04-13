@@ -32,12 +32,17 @@ void Game::StartGame(void)
         {
             if (event.type == sf::Event::Closed)
                 Window.close();
+            else if (event.type == sf::Event::GainedFocus)
+                SetFocus(true);
+            else if (event.type == sf::Event::LostFocus)
+                SetFocus(false);
 
         }
-        GridTexture.loadFromFile("Resources/img/Grid.png");
-        Grid.setTexture(&GridTexture);
-        Grid.setPosition(100, 100);
         Window.clear();
+        //Testing the input Handler
+        if(IsMousePressed())
+            std::cout << GetClickedPosition().x << " ; " << GetClickedPosition().y <<std::endl;
+        
         Window.draw(Grid);
         Window.display();
 
@@ -50,14 +55,14 @@ void Game::_setIndex(sf::Vector2i mousePosition)
 	// TODO : implement
 }
 
-bool Game::CheckWin()
+bool Game::_CheckWin()
 {
    // TODO : implement
 }
 
 
 
-void Game::DrawPieces()
+void Game::_DrawPieces()
 {
    // TODO : implement
 }
