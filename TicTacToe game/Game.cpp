@@ -158,7 +158,6 @@ swap_row_and_col:
     i = 0;
     while (i < 3)
     {
-        std::cout << getGridRef(i, 0) << getGridRef(i, 1) << getGridRef(i, 2)<< std::endl;
         if (getGridRef(i, 0) == getGridRef(i, 1) && getGridRef(i, 1)== getGridRef(i, 2)&& getGridRef(i, 0) != 'E')
         {
             Winner = getGridRef(i,0);
