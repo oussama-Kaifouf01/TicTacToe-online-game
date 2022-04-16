@@ -5,7 +5,9 @@
 
 Game::Game():
 	Window(sf::VideoMode(700, 700), "Tic-Tac-Toe", sf::Style::Close),
-	Grid(sf::Vector2f(466, 466))
+	Grid(sf::Vector2f(466, 466)),
+    X('X'),
+    O('O')
 {
     Turn = 'X';
     Winner = ' ';
@@ -79,8 +81,6 @@ void Game::StartGame(void)
                 std::cout << "winner:" << Winner << std::endl;
                 std::cout << "-----" << std::endl;
             }
-            
-            ///////DEBUG/////////
 #pragma endregion
         
 
@@ -88,9 +88,14 @@ void Game::StartGame(void)
 
 
 #pragma endregion
-
-
-
+        //testing Pieces
+        X.SetPiecePosition(100,50);
+        Window.draw(X.GetPiece());
+        X.SwitchPieceTexture();
+        X.SetPiecePosition(300,50);
+        Window.draw(X.GetPiece());
+        X.SwitchPieceTexture();
+        
         Window.display();
 
     }

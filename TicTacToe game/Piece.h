@@ -5,11 +5,11 @@
 class Piece
 {
 public:
-	Piece();
+	Piece(char type);
 	//Returns the piece's shape (in order to draw it in the window)
 	sf::RectangleShape GetPiece();
 	//changes the position of the piece
-	void SetPiecePosition();
+	void SetPiecePosition(float x, float y);
 	//switch the texture of the position beetwen, normal and winning piece
 	void SwitchPieceTexture();
 
