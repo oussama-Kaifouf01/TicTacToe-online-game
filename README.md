@@ -6,6 +6,6 @@ class diagram:
 
 
 
-Sequence diagram
+Game Loop Sequence diagram
 
 ![seqq](https://user-images.githubusercontent.com/84056833/162552889-a14f4dd0-4314-47af-82a1-f77ee523c993.png)
