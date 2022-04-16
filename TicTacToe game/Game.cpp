@@ -59,11 +59,14 @@ void Game::StartGame(void)
         {
             //detect what square has the player clicked on and save his move, only if the square is empty
             _setIndex(GetClickedPosition());
+            //check if a player has won
+            //bool a = _CheckWin();
+            
 #pragma region Debug and test
             std::cout << "-----" << std::endl;
             for (int j = 0; j < 3; j++)
             {
-                for (int i = 0; i < 3; i++) 
+                for (int i = 0; i < 3; i++)
                 {
 
                     std::cout << GridRef[j][i] << ' ';
@@ -71,9 +74,16 @@ void Game::StartGame(void)
                 std::cout << std::endl;
             }
             std::cout << "-----" << std::endl;
-
+            if (_CheckWin())
+            {
+                std::cout << "winner:" << Winner << std::endl;
+                std::cout << "-----" << std::endl;
+            }
+            
             ///////DEBUG/////////
 #pragma endregion
+        
+
         }
 
 
@@ -129,11 +139,58 @@ void Game::_setIndex(sf::Vector2i mousePosition)
         y = y + 160;
         i++;
     }
+
 }
 
 bool Game::_CheckWin()
 {
-   // TODO : implement
+    //Horizontal and Vertical
+    int i = 0;
+    bool Swap_row_col = false;
+    auto getGridRef = [&](int i, int j)
+    {
+        if (!Swap_row_col)
+            return Game::GridRef[i][j];
+        else if (Swap_row_col)
+            return Game::GridRef[j][i];
+    };
+swap_row_and_col:
+    i = 0;
+    while (i < 3)
+    {
+        std::cout << getGridRef(i, 0) << getGridRef(i, 1) << getGridRef(i, 2)<< std::endl;
+        if (getGridRef(i, 0) == getGridRef(i, 1) && getGridRef(i, 1)== getGridRef(i, 2)&& getGridRef(i, 0) != 'E')
+        {
+            Winner = getGridRef(i,0);
+            goto winner_found;
+        }
+        i++;
+    }
+    if (Swap_row_col==false)
+    {
+        Swap_row_col = true;
+        goto swap_row_and_col;
+    }
+    //Diagonal
+    Swap_row_col = false;
+    if (getGridRef(1, 1) != 'E')
+    {
+        if (getGridRef(0,0) == getGridRef(1, 1) && getGridRef(1, 1) == getGridRef(2, 2))
+        {
+            Winner = getGridRef(1, 1);
+            goto winner_found;
+        }
+        else if (getGridRef(0,2) == getGridRef(1, 1) && getGridRef(1, 1) == getGridRef(2, 0))
+        {
+            Winner = getGridRef(1, 1);
+            goto winner_found;
+        }
+    }
+winner_found:
+    if (Winner == ' ')
+        return false;
+    else if (Winner != ' ')
+        return true;
 }
 
 
