@@ -217,15 +217,29 @@ void Game::_DrawPieces()
         x = 100;
         while (i < 3)
         {
-            if (GridRef[j][i] == 'O')
+            if (GridRef[j][i] == 'O' || GridRef[j][i] == 'o')
             {
                 O.SetPiecePosition((x + 245) / 2, (y + 245) / 2);
-                Window.draw(O.GetPiece());
+                if (GridRef[j][i] == 'o')
+                {
+                    O.SwitchPieceTexture();
+                    Window.draw(O.GetPiece());
+                    O.SwitchPieceTexture();
+                }
+                else if (GridRef[j][i] == 'O')
+                    Window.draw(O.GetPiece());
             }
-            else if (GridRef[j][i] == 'X')
+            else if (GridRef[j][i] == 'X' || GridRef[j][i] == 'x')
             {
                 X.SetPiecePosition((x + 245) / 2, (y + 245) / 2);
-                Window.draw(X.GetPiece());
+                if (GridRef[j][i] == 'x')
+                {
+                    X.SwitchPieceTexture();
+                    Window.draw(X.GetPiece());
+                    X.SwitchPieceTexture();
+                }
+                else if (GridRef[j][i] == 'X')
+                    Window.draw(X.GetPiece());
             }
             i++;
             x = x + 320;
