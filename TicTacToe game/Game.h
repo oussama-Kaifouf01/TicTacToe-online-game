@@ -30,7 +30,7 @@ private:
 	bool _CheckWin();
 	//method that draws the pieces in the grid
 	void _DrawPieces();
-	//method to start a new game
+	//method to start a new game and Reset the Winner, GirdRef, and EmptyPositions
 	void _NewGame();
 
 	/********************* Vritual methods *********************/

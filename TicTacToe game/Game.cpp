@@ -57,37 +57,40 @@ void Game::StartGame(void)
 #pragma region Game Logic
 
         //check if the player has clicked inside the grid and if no player has won yet
-        if (IsMousePressed() && Winner==' ')
+        if (Winner != ' ' || EmptyPositions==0)
+        {
+wanna_play_again:
+            std::cout << "Wanna play again ?" << std::endl;
+            char choice;
+            std::cin >> choice;
+            if (choice == 'y' || choice == 'Y')
+            {
+                _NewGame();
+            }
+            else if (choice == 'n' || choice == 'N')
+            {
+                //TODO: Show Score
+                break; //break out game loop = close window;
+            }
+            else
+            {
+                goto wanna_play_again;
+            }
+        }
+        else if (IsMousePressed() && Winner==' ')
         {
             //detect what square has the player clicked on and save his move, only if the square is empty
             _setIndex(GetClickedPosition());
-            //check if a player has won
-            //bool a = _CheckWin();
-            
-#pragma region Debug and test
-            std::cout << "-----" << std::endl;
-            for (int j = 0; j < 3; j++)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    std::cout << GridRef[j][i] << ' ';
-                }
-                std::cout << std::endl;
-            }
-            std::cout << "-----" << std::endl;
             if (_CheckWin())
             {
                 std::cout << "winner:" << Winner << std::endl;
                 std::cout << "-----" << std::endl;
             }
-#pragma endregion
-        
-
         }
-
-
-#pragma endregion
         _DrawPieces();
+
+        
+#pragma endregion
 
 
         Window.display();
@@ -253,5 +256,14 @@ void Game::_DrawPieces()
 
 void Game::_NewGame()
 {
-   // TODO : implement
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            GridRef[i][j] = 'E';
+        }
+
+    }
+    Winner = ' ';
+    EmptyPositions = 9;
 }
