@@ -70,7 +70,6 @@ void Game::StartGame(void)
             {
                 for (int i = 0; i < 3; i++)
                 {
-
                     std::cout << GridRef[j][i] << ' ';
                 }
                 std::cout << std::endl;
@@ -89,7 +88,29 @@ void Game::StartGame(void)
 
 #pragma endregion
         _DrawPieces();
-        
+
+        if (IsMousePressed())
+        {
+
+#pragma region Debug and test
+        std::cout << "-----" << std::endl;
+        for (int j = 0; j < 3; j++)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                std::cout << GridRef[j][i] << ' ';
+            }
+            std::cout << std::endl;
+        }
+        std::cout << "-----" << std::endl;
+        if (_CheckWin())
+        {
+            std::cout << "winner:" << Winner << std::endl;
+            std::cout << "-----" << std::endl;
+        }
+#pragma endregion
+        }
+
         Window.display();
 
     }
@@ -153,13 +174,25 @@ bool Game::_CheckWin()
         else if (Swap_row_col)
             return Game::GridRef[j][i];
     };
+    auto setGridRef = [&](int i, int j) 
+    { 
+        if (!Swap_row_col)
+            GridRef[i][j] = (char)tolower(Game::GridRef[i][j]);
+        else if (Swap_row_col)
+            GridRef[j][i] = (char)tolower(Game::GridRef[j][i]);
+    };
 swap_row_and_col:
     i = 0;
+
     while (i < 3)
     {
         if (getGridRef(i, 0) == getGridRef(i, 1) && getGridRef(i, 1)== getGridRef(i, 2)&& getGridRef(i, 0) != 'E')
         {
             Winner = getGridRef(i,0);
+            for (int count = 0; count < 3; count++)
+            {
+                setGridRef(i, count);
+            }
             goto winner_found;
         }
         i++;
