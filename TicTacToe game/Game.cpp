@@ -89,27 +89,6 @@ void Game::StartGame(void)
 #pragma endregion
         _DrawPieces();
 
-        if (IsMousePressed())
-        {
-
-#pragma region Debug and test
-        std::cout << "-----" << std::endl;
-        for (int j = 0; j < 3; j++)
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                std::cout << GridRef[j][i] << ' ';
-            }
-            std::cout << std::endl;
-        }
-        std::cout << "-----" << std::endl;
-        if (_CheckWin())
-        {
-            std::cout << "winner:" << Winner << std::endl;
-            std::cout << "-----" << std::endl;
-        }
-#pragma endregion
-        }
 
         Window.display();
 
