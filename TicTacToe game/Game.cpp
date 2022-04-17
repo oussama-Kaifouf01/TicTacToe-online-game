@@ -88,13 +88,7 @@ void Game::StartGame(void)
 
 
 #pragma endregion
-        //testing Pieces
-        X.SetPiecePosition(100,50);
-        Window.draw(X.GetPiece());
-        X.SwitchPieceTexture();
-        X.SetPiecePosition(300,50);
-        Window.draw(X.GetPiece());
-        X.SwitchPieceTexture();
+        _DrawPieces();
         
         Window.display();
 
@@ -201,7 +195,32 @@ winner_found:
 
 void Game::_DrawPieces()
 {
-   // TODO : implement
+    int i;
+    int j = 0;
+    int x;
+    int y = 100;
+    while (j < 3)
+    {
+        i = 0;
+        x = 100;
+        while (i < 3)
+        {
+            if (GridRef[j][i] == 'O')
+            {
+                O.SetPiecePosition((x + 245) / 2, (y + 245) / 2);
+                Window.draw(O.GetPiece());
+            }
+            else if (GridRef[j][i] == 'X')
+            {
+                X.SetPiecePosition((x + 245) / 2, (y + 245) / 2);
+                Window.draw(X.GetPiece());
+            }
+            i++;
+            x = x + 320;
+        }
+        y = y + 320;
+        j++;
+    }
 }
 
 
